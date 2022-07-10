@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+}
+.container{
+    background-image: url('https://media.istockphoto.com/vectors/time-flat-design-education-icon-with-side-shadow-vector-id872742562?k=20&m=872742562&s=612x612&w=0&h=y80iyaARbz162i3Nq0oTZFjb-mLEe0Ot7V69VGwrHuo=');
+    color: white;
+    font-family: monospace;
+    letter-spacing: 2px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    text-align: center;
+    width: 400px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px red;
+    margin-top: 100px;
+    z-index: 11;
+    border-radius: 100px;
+}
+button{
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    margin-top: 10px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px white;
+    cursor: pointer;
+    color: white;
+    font-family: monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: rgba(255,255,255,0.3);
+}
+
+.show{
+    position: absolute;
+    background-color: rgba(255,255,255,0.5);
+    display: flex;
+    border-radius: 2px;
+    margin-top: 420px;
+    color: black;
+    font-weight: 200;
+    height: 30px;
+    z-index: 11;
+}
+.anim{
+    margin-top: 285px;
+    border-radius: 100px;
+    position: absolute;
+    background-color: yellow;
+    height: 20px;
+    width: 600px;
+    z-index: 10;
+    animation-name: move;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    0%{
+        transform: rotate(0deg);
+
+    }
+    25%{
+        transform: rotate(90deg);
+    }
+    50%{
+        transform: rotate(180deg);
+
+    }    
+    75%{
+        transform: rotate(270deg);
+    }
+    100%{
+        transform: rotate(360deg);
+
+    }
+}
