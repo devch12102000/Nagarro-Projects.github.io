@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cricket Series Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+</head>
+
+<body class="bg-dark">
+    
+    <div class="container mt-5 px-4  mw-100 text-center">
+        <h1 class="text-light text-center m-5">Bored !!!</h1>
+        <h5 class="text-light text-center m-5">Let's find something to do...</h5>
+
+        <button class="btn btn-success ">Find Something New</button>
+        <a href="./index.html" class="btn btn-danger " onclick="window.confirm('RESET?');">Reset</a>
+        <div id="allData" class="row text-light"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script>
+
+        let dataContainer = document.querySelector("#allData");
+
+        window.addEventListener("click", getFactFetch);
+
+        function getFactFetch() {
+
+        fetch(
+            "http://www.boredapi.com/api/activity/"
+        ).then((res) => res.json())
+            .then((data) => {
+
+
+                let card = `
+            <div class="card bg-warning m-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-dark">${data.activity}</h5>
+      <p class="card-text"> Activity Type : ${data.type}</p>
+      <p class="card-text"> Participants : ${data.participants}</p>
+
+    </div>
+  </div>
+            `;
+            dataContainer.insertAdjacentHTML("beforeend", card);
+
+            })
+        
+            .catch((err) => {
+            console.log(err);
+          });
+        }
+    </script>
+
+</body>
+
+</html>
