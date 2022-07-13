@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark">
+
+    <h1 class="text-center text-light">Copy To Clipboard</h1>
+    <div class="container text-center">
+        <textarea name="" id="textone" cols="40"
+            rows="10">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam fugit minima, maiores ipsa inventore iusto laboriosam optio quis odio autem, laudantium deleniti accusamus dicta natus libero enim nesciunt voluptatibus ex sed. Illo optio nulla vel perspiciatis officia expedita reprehenderit architecto!</textarea>
+        <div class="container">
+            <button class="btn btn-success m-2" id="bttn" >Copy</button>
+        </div>
+        <div class="container">
+            <textarea name="" id="texttwo" cols="40" rows="10"></textarea>
+
+        </div>
+
+    </div>
+    <script>
+        //Using Javascript 
+        function myFunctionJs() {
+            /* Get the text field */
+            var copyText = document.getElementById("textone");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+            /* Alert the copied text */
+            alert("Copying Successful !!! ");
+        }
+
+
+        //Using Jquery
+        $(document).ready(function(){
+            $('#bttn').click(function(){
+                $('#textone').select()
+                document.execCommand("copy");
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
