@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Up Box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        
+
+
+#box{
+    background-color: bisque;
+    height: 500px;
+    width: 700px;
+    box-shadow: 0px 0px 10px black;
+    visibility: visible;
+    
+}
+
+
+/* #box.show{
+    visibility: visible;
+} */
+
+/* #box.hide{
+    visibility: hidden;
+} */
+
+.one h3{
+    width: 680px;
+    position: relative;
+}
+.one h3 button img{
+    position: absolute;
+    z-index: 2; 
+    margin-top: 1px;
+    margin-left: 220px;
+    cursor: pointer;
+}
+#cross img{
+    height: 10px;
+    width: 10px;
+}
+    </style>
+
+</head>
+<body class="bg-danger">
+    <div class="container text-center">
+        <button class="btn btn-warning mt-2 click">POP UP</button>
+    </div>
+    <div class="container mt-2" id="box">
+        <div class="one" >
+            <h3 class="text-dark text-center ">Enter Details<button class="btn" id="cross"><img src="data:image/webp;base64,UklGRkYCAABXRUJQVlA4WAoAAAAQAAAAgQAAgQAAQUxQSNABAAARDzD/ERECUm27cSTVvKuCECiBpobWUAIhyx5y9BeR/v8QIvrPyG3bSOlp9pEa5xGh1/dF1Du2m6gl9hevrzV+PuKmjGPhtSFq5bXjguT1g1uB14HLAS6gcJ6khYwdL4qPNTZ8KD6W8zzH/5w3cPxXBBXQ31gQ+O0+jh9CALK/guL3l1P8/hzF748LfCKAfagg8JsAii8EIOc3KD4RMMG7AIrfBVD8IUBRFQi++oGCMhVI6rLbpban/ylgiiGqJj6TqXa5QPCJgIEvBCB5bw18JoDjt3sHPhWgeho58LmAlgsuoKCS1FqaC2hNzwW0WHABLThcQMPnAlT4oqDiGQeAUJFGitqBVdSGE18IOPGFAIUfAdxUFS5GGQfGLcaLDCGGMkeqod3YGGPrjM01tt9oEKOFnCYz2tBoVKOVjWY34mAExoiUEzojlkZwjWgb4TfGgzFAjBHjDCE9pii+EIAkX2L4UwDBnAKGCCZmqGLqlExkKN0F4kEIQNItnPhEwMQnAiY+ETDxmQDVXMiJzwUURMN2fC6gNTkX0GLABbSgcAEtSlRAx+cCVBwLLSdCADJUtmpVQ+ByLGpMxM9HDJKM/SVGzRqbGj5LfF9EvUOvAFZQOCBQAAAAcAcAnQEqggCCAD6RSKFNJaQjIiBoALASCWlu4XVAADuh1VJsmIdVSbJiHVUmyYh1VJsmIdVSbJiHVUmyYh1VJsmIMAAA/v94H/xAAAAAAAA=" alt=""></button></h3>
+            
+            <form >
+                <div class="form-group">
+                    <label for="user">Username</label>
+                    <input type="text" name="" id="username" class="form-control" autocomplete="off">
+                    <h5 id="usernamevalidation"></h5>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="" id="email" class="form-control" autocomplete="off">
+                    <h5 id="emailvalidation"></h5>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="" id="password" class="form-control" autocomplete="off">
+                    <h5 id="passwordvalidation"></h5>
+                </div>
+                <div class="form-group">
+                    <label for="conpassword">Confirm Password</label>
+                    <input type="password" name="" id="confirmpassword" class="form-control" autocomplete="off">
+                    <h5 id="confirmpasswordvalidation"></h5>
+                </div>
+                <input type="submit" name="" value="Submit" class=" btn btn-success " id="submitbutton">
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script >$(document).ready(function(){
+        $('.click').on('click',function(){
+            $('#box').toggle();
+        });
+    
+        
+        $('#cross').on('click',function(){
+            $('#box').toggle();
+        });
+        $('#usernamevalidation').hide();
+        $('#passwordvalidation').hide();
+        $('#confirmpasswordvalidation').hide();
+    
+        var user_err=true;
+        var pass_err=true;
+        var conf_pass_err=true;
+        var em_err=true;
+        
+        $('#email').keyup(function(){
+            email_validation();
+        });
+        function email_validation(){
+            var emailregex =  /^([\-\.a-zA-Z0-9]+)@([\-\.a-zA-Z]+)\.([a-zA-Z]){2,8}$/;
+            var email_val = $('#email').val();
+            if (emailregex.test(email_val)){
+                $('#emailvalidation').hide();
+            }
+            else{
+                
+                $('#emailvalidation').show();
+                $('#emailvalidation').html('Email must be of format "xyz@lmn.ab" ');
+                $('#emailvalidation').css('color','red');
+                user_err=false;
+                return false;
+    
+    
+            }
+            
+        }
+    
+    
+        $('#username').keyup(function(){
+            username_validation();
+        });
+        function username_validation(){
+            var username_val = $('#username').val();
+            if (username_val.length==""){
+                $('#usernamevalidation').show();
+                $('#usernamevalidation').html('Username can not be empty...');
+                $('#usernamevalidation').css('color','red');
+                user_err=false;
+                return false;
+            }
+            else{
+                $('#usernamevalidation').hide();
+    
+            }
+            if (username_val.length<3 || username_validation.length>10){
+                $('#usernamevalidation').show();
+                $('#usernamevalidation').html('Username length range 3-10');
+                $('#usernamevalidation').css('color','red');
+                user_err=false;
+                return false;
+            }
+            else{
+                $('#usernamevalidation').hide();
+            }
+        }
+        $('#password').keyup(function(){
+            password_validation();
+        });
+    
+        function password_validation(){
+            var passregex =  /^[a-zA-Z0-9!@#$%^&*0-9]{6,16}$/;
+    
+            var pass_val=$('#password').val();
+            if (passregex.test(pass_val)){
+                $('#passwordvalidation').hide();
+            }
+            else{
+                $('#passwordvalidation').show();
+                $('#passwordvalidation').html('Password must be of form "a-zA-Z0-9!@#$%^&*0-9"');
+                $('#passwordvalidation').css('color','red');
+                user_err=false;
+                return false;
+            }
+        }
+    
+        $('#confirmpassword').keyup(function(){
+            confirm_password();
+        });
+    
+        function confirm_password(){
+            var conf_val = $('#confirmpassword').val();
+            var pass_val = $('#password').val();
+            if (pass_val!=conf_val){
+                $('#confirmpasswordvalidation').show();
+                $('#confirmpasswordvalidation').html('Password did not match...');
+                $('#confirmpasswordvalidation').css('color','red');
+                conf_pass_err=false;
+                return false;
+            }
+            else{
+                $('#confirmpasswordvalidation').hide();
+    
+            }
+        }
+    
+        $('#submitbutton').on('click',function(){
+    
+    
+            username_validation();
+            password_validation();
+            confirm_password();
+            email_validation();
+    
+            if(user_err==true && pass_err==true && conf_pass_err==true && em_err==true){
+                $('#box').toggle();
+    
+                return true;
+    
+            }
+            else{
+                return false;
+    
+            }
+    
+    
+        });
+    
+    });
+    </script>
+</body>
+</html>
