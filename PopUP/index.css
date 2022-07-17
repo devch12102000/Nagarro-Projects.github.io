@@ -1,0 +1,36 @@
+
+
+
+#box{
+    background-color: bisque;
+    height: 500px;
+    width: 700px;
+    box-shadow: 0px 0px 10px black;
+    visibility: visible;
+    
+}
+
+
+/* #box.show{
+    visibility: visible;
+} */
+
+/* #box.hide{
+    visibility: hidden;
+} */
+
+.one h3{
+    width: 680px;
+    position: relative;
+}
+.one h3 button img{
+    position: absolute;
+    z-index: 2; 
+    margin-top: 1px;
+    margin-left: 220px;
+    cursor: pointer;
+}
+#cross img{
+    height: 10px;
+    width: 10px;
+}
