@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movies</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-dark text-center" >
+    <div class="container mt-5 px-4 mw-100 text-center">
+      <h1 class="text-light text-center">Movies API</h1>
+      <p class="text-center text-light">Get information about any desired movie...</p>
+        <input type="text" name="" id="mname" class="form-control " placeholder="Enter Movie Name">
+        <button type="submit" class="btn btn-success mt-3" onclick="getFactFetch()">Submit</button>
+      <div id="allData" class="row text-light" ></div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        let dl='';
+     var dt = document.getElementById('allData');
+     function getFactFetch(){
+        const movieName = document.getElementById('mname').value;
+        const url = `http://www.omdbapi.com/?t=${movieName}&apikey=f110fe32`;
+        fetch(url)
+        .then(res=> res.json())
+        .then(data =>{ 
+            document.getElementById('allData').innerHTML=`<h1>${data.Title}</h1>
+                <h4>${data.Year}</h4>
+                <h4>${data.Genre}</h4>
+                <p>${data.Plot}</p>`
+            
+        })
+        .catch((error) => console.log(error))
+        
+    };
+    </script>
+  </body>
+</html>
