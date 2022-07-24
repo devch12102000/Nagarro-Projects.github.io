@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+</head>
+<body class="bg-dark text-center">
+    <div class="container">
+        <h1 class="text-light">        <i class="fa-solid fa-cloud-sun text-light"></i>
+            Weather </h1>
+        <button class="btn btn-primary" onclick="Fetch(1)">Delhi</button>
+        <button class="btn btn-primary" onclick="Fetch(2)">Mumbai</button>
+        <button class="btn btn-primary" onclick="Fetch(3)">Uttar Pradesh</button>
+        <button class="btn btn-primary" onclick="Fetch(4)">Rajasthan</button>
+        <div id="data" ></div>
+
+    </div>
+    
+
+    <script>
+        const dt = {
+            "delhi": {
+            "lon": 77.2295,
+            "lat": 28.6129
+            },
+            "mumbai": {
+            "lon": 72.8777,
+            "lat": 19.0760
+            },
+            "up": {
+            "lon": 80.9462,
+            "lat": 26.8467
+            },
+            "rajasthan": {
+            "lon":  75.7873,
+            "lat": 26.9124
+            }
+        }
+
+        function Fetch(num){
+            if (num==1){
+                lat=dt.delhi.lat;
+                lon=dt.delhi.lon;
+            }
+            else if(num==2){
+                lat=dt.mumbai.lat;
+                lon=dt.mumbai.lon;
+            }
+            else if(num==3){
+                lat=dt.up.lat;
+                lon=dt.up.lon;
+            }
+            else if(num==4){
+                lat=dt.rajasthan.lat;
+                lon=dt.rajasthan.lon;
+            }
+        const url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9f5d67c60d10d8f0cbed3c50c2b98fbf`        
+        fetch(url)
+        .then(res=> res.json())
+        .then(data =>{ 
+            // console.log(data.name);
+            // console.log(data.weather[0].description);
+            // console.log(((data.main.temp_max-275.15).toFixed(2)) + " °C");
+            // console.log(data.sys.country);
+            document.getElementById('data').innerHTML=`<center>
+            
+            <div class="card mt-3 " style="width: 18rem;">
+        <div class="card-body">
+            
+          <h5 class="card-title">${data.name}</h5>
+          <p class="card-text">Country : ${data.sys.country} <br> Temperature : ${((data.main.temp_max-275.15).toFixed(2)) + " °C"} <br> Weather : ${data.weather[0].description}</p>
+
+        </div>
+      </div></center>`;
+        })
+        .catch((error) => console.log(error))
+        
+    };
+    </script>
+</body>
+</html>
