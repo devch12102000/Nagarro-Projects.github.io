@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Changer</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container bg-light">
+        <button id="black" onclick="color(1)" class="btn btn-dark">Black</button>
+        <button id="green" onclick="color(2)" class="btn btn-success">Green</button>
+        <button id="yellow" onclick="color(3)" class="btn btn-warning">Yellow</button>
+        <button id="blue" onclick="color(4)" class="btn btn-primary">Blue</button>
+    </div>
+    <hr>
+    <hr>
+    <div id="text">
+        <textarea name="textarea" id="textarea" cols="100" rows="10" placeholder="Enter text...">Enter text here...</textarea>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
